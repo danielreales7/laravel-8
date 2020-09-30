@@ -16,3 +16,9 @@ mix.js('resources/js/app.js', 'public/js')
         require('postcss-import'),
         require('tailwindcss'),
     ]);
+
+mix.browserSync('http://localhost');
+
+if(mix.inProduction()) {
+    mix.version();
+}
