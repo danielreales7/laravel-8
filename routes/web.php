@@ -27,3 +27,7 @@ Route::resource('portafolio', ProjectController::class)
 
 Route::view('/contacto', 'contact')->name('contact');
 Route::post('contact', [MessageController::class, 'store'])->name('messages.store');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

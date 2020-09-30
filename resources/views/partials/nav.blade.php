@@ -1,10 +1,17 @@
 <nav>
     <ul>
-        <li>
-            <a class="{{ setActive('home') }}" href="{{ route('home') }}">@lang('Home')</a>
-            <a class="{{ setActive('about') }}" href="{{ route('about') }}">@lang('About')</a>
-            <a class="{{ setActive('projects.*') }}" href="{{ route('projects.index') }}">@lang('Projects')</a>
-            <a class="{{ setActive('contact') }}" href="{{ route('contact') }}">@lang('Contact')</a>
-        </li>
+        <li class="{{ setActive('home') }}"><a href="{{ route('home') }}">@lang('Home')</a>
+        <li class="{{ setActive('about') }}"><a href="{{ route('about') }}">@lang('About')</a></li>
+        <li class="{{ setActive('projects.*') }}"><a href="{{ route('projects.index') }}">@lang('Projects')</a></li>
+        <li class="{{ setActive('contact') }}"><a href="{{ route('contact') }}">@lang('Contact')</a></li>
+        @guest
+            <li><a href="{{ route('login') }}">Login</a></li>
+        @else
+            <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Cerrar sesión</a></li>
+        @endguest
     </ul>
 </nav>
+<!-- Authentication -->
+<form id="logout-form" method="POST" action="{{ route('logout') }}" style="display: none">
+    @csrf
+</form>
