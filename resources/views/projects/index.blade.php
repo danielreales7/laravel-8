@@ -4,7 +4,9 @@
 
 @section('content')
     <h1>@lang('Projects')</h1>
-    <a href="{{ route('projects.create') }}">Crear proyecto</a>
+    @auth
+        <a href="{{ route('projects.create') }}">Crear proyecto</a>
+    @endauth
     <ul>
         @forelse($projects as $project)
             <li><a href="{{ route('projects.show', $project) }}">{{ $project->title }} <br /><small>{{ $project->description }}</small> <br /> {{ $project->created_at->diffForHumans() }}</a> </li>
