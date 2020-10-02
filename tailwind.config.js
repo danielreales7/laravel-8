@@ -11,13 +11,18 @@ module.exports = {
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
-            },
+            }
         },
     },
 
     variants: {
         opacity: ['responsive', 'hover', 'focus', 'disabled'],
+        transitionProperty: ['responsive', 'motion-safe', 'motion-reduce'],
+        transitionDelay: ['responsive', 'hover', 'focus'],
     },
 
-    plugins: [require('@tailwindcss/ui')],
+    plugins: [
+        require('@tailwindcss/ui'),
+        require('tailwindcss-transitions'),
+    ]
 };

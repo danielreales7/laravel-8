@@ -18,6 +18,13 @@
             </div>
         </div>
     </section>
+    <div x-data="{ show:true }">
+        <div class="w-12 h-12">
+            <div class="bg-green-400 w-full h-full" x-show="show"></div>
+        </div>
+
+        <button @click="show = ! show">Toggle</button>
+    </div>
     @auth
         {{ auth()->user()->name }}
     @endauth
