@@ -15,7 +15,7 @@
             </button>
         </div>
     </div>
-    <div x-show="open" :class="open ? 'block' : 'hidden'"
+    <div x-show="window.innerWidth >= 768 || open"
          x-transition:enter="transition ease-out duration-300"
          x-transition:enter-start="transform opacity-0 scale-95"
          x-transition:enter-end="transform opacity-100 scale-100"
