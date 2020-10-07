@@ -1,5 +1,5 @@
 @if($project->image)
-    <img class="w-full" src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
+    <img class="w-full" style="height: 250px; object-fit: cover"  src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
 @endif
 <div class="items-center justify-center bg-grey-lighter">
     <label class="w-64 flex flex-col items-center px-4 py-6 bg-white text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-black">

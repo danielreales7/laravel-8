@@ -20,7 +20,7 @@
                         @forelse($projects as $project)
                             <div class="max-w-sm rounded overflow-hidden shadow-lg">
                                 @if($project->image)
-                                    <img class="w-full" src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
+                                    <img class="w-full" style="height: 150px; object-fit: cover" src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
                                 @endif
                                 <div class="px-6 py-4">
                                     <div class="font-bold text-xl mb-2"><a href="{{ route('projects.show', $project) }}">{{ $project->title }}</a></div>
