@@ -16,26 +16,32 @@
                 </div>
                 <div class="container mx-auto py-2 px-8">
                     <p class="font-thin">Proyectos realizados Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                    <ul class="list-group bg-white">
+                    <div class="flex flex-wrap justify-between items-start">
                         @forelse($projects as $project)
-                            <li class="border-0 rounded-md shadow-sm py-2 px-2">
-                                <a class="text-secondary flex justify-between items-center"
-                                   href="{{ route('projects.show', $project) }}">
-                                    <span class="font-weight-bold">
-                                        {{ $project->title }}
-                                    </span>
-                                    <span class="text-black-50">
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                @if($project->image)
+                                    <img class="w-full" src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
+                                @endif
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2"><a href="{{ route('projects.show', $project) }}">{{ $project->title }}</a></div>
+                                    <p class="text-gray-700 text-base">
                                         {{ $project->created_at->format('d/m/Y')}}
-                                    </span>
-                                </a>
-                            </li>
+                                    </p>
+                                    <p class="truncate">{{ $project->description }}</p>
+                                    <div class="flex justify-between items-center">
+                                        <a href="{{ route('projects.show', $project) }}"
+                                           class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-2"
+                                        >Ver más...</a>
+                                    </div>
+                                </div>
+                            </div>
                         @empty
                             <li class="border-0 mb-3 shadow-sm">
                                 No hay proyectos para mostrar
                             </li>
                         @endforelse
                         {{ $projects->links() }}
-                    </ul>
+                    </div>
                 </div>
             </div>
         </main>

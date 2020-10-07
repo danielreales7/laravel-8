@@ -7,6 +7,9 @@
         <main>
             <div class="py-15">
                 <div class="w-full mx-auto sm:px-6 lg:px-8 rounded-md shadow-sm bg-white">
+                    @if($project->image)
+                        <img class="w-full" src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
+                    @endif
                     <h1 class="text-4xl">{{ $project->title }}</h1>
                     <p>{{ $project->description }}</p>
                     <p>{{ $project->created_at->diffForHumans() }}</p>
