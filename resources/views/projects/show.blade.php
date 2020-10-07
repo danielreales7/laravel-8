@@ -3,14 +3,36 @@
 @section('title', 'Porfolio | ' . $project->title)
 
 @section('content')
-    <h1>{{ $project->title }}</h1>
-    @auth
-        <a href="{{ route('projects.edit', $project) }}">Editar</a>
-        <form method="POST" action="{{ route('projects.destroy', $project) }}">
-            @csrf @method('DELETE')
-            <button>Eliminar</button>
-        </form>
-    @endauth
-    <p>{{ $project->description }}</p>
-    <p>{{ $project->created_at->diffForHumans() }}</p>
+    <div class="min-h-screen flex items-center justify-center bg-gray-100">
+        <main>
+            <div class="py-15">
+                <div class="w-full mx-auto sm:px-6 lg:px-8 rounded-md shadow-sm bg-white">
+                    <h1 class="text-4xl">{{ $project->title }}</h1>
+                    <p>{{ $project->description }}</p>
+                    <p>{{ $project->created_at->diffForHumans() }}</p>
+                    <div class="flex justify-between items-center">
+                        <a href="{{ route('projects.index') }}">
+                            Regresar
+                        </a>
+                        @auth
+                            <div class="inline-flex">
+                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-2"
+                                   href="{{ route('projects.edit', $project) }}"
+                                >Editar</a>
+                                <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mb-2"
+                                   href="#"
+                                   onclick="document.getElementById('delete-project').submit()"
+                                >Eliminar</a>
+                            </div>
+                            <form id="delete-project"
+                                  class="d-none"
+                                  method="POST" action="{{ route('projects.destroy', $project) }}">
+                                @csrf @method('DELETE')
+                            </form>
+                        @endauth
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 @endsection

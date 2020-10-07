@@ -1,4 +1,4 @@
-<header x-data="{ open: false }" @click.away="open = false" @close.stop="open = false" class="absolute container bg-white sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+<header x-data="{ open: false }" @click.away="open = false" @close.stop="open = false" class="absolute container top-0 bg-white sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
     <div class="flex items-center justify-between px-4 py-3 sm:p-0 shadow-sm">
         <div>
             <a href="{{ route('home') }}" class="">
