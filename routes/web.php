@@ -4,8 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\App;
+use \Illuminate\Support\Facades\DB;
 
 App::setLocale('es');
+
+//DB::listen(function($query) {
+//    var_dump($query->sql);
+//}); Con esto vemos las consultas que se hacen a la base de datos
 
 Route::view('/', 'home')->name('home');
 Route::view('/quienes-somos', 'about')->name('about');
