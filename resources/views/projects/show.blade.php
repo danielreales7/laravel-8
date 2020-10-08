@@ -22,19 +22,23 @@
                         </a>
                         @auth
                             <div class="inline-flex">
-                                <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-2"
-                                   href="{{ route('projects.edit', $project) }}"
-                                >Editar</a>
-                                <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mb-2"
-                                   href="#"
-                                   onclick="document.getElementById('delete-project').submit()"
-                                >Eliminar</a>
+                                @can('update', $project)
+                                    <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-2"
+                                       href="{{ route('projects.edit', $project) }}"
+                                    >Editar</a>
+                                @endcan
+                                @can('delete', $project)
+                                    <a class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded mb-2"
+                                       href="#"
+                                       onclick="document.getElementById('delete-project').submit()"
+                                    >Eliminar</a>
+                                    <form id="delete-project"
+                                          class="d-none"
+                                          method="POST" action="{{ route('projects.destroy', $project) }}">
+                                        @csrf @method('DELETE')
+                                    </form>
+                                @endcan
                             </div>
-                            <form id="delete-project"
-                                  class="d-none"
-                                  method="POST" action="{{ route('projects.destroy', $project) }}">
-                                @csrf @method('DELETE')
-                            </form>
                         @endauth
                     </div>
                 </div>
