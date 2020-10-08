@@ -7,7 +7,14 @@
         <main>
             <div class="py-15">
                 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 flex justify-between items-center">
-                    <h1 class="text-4xl">@lang('Projects')</h1>
+                    @isset($category)
+                        <div>
+                            <h1 class="text-4xl">{{ $category->name }}</h1>
+                            <a href="{{ route('projects.index') }}">Regresar al portafolio</a>
+                        </div>
+                    @else
+                        <h1 class="text-4xl">@lang('Projects')</h1>
+                    @endisset
                     @auth
                         <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-2"
                            href="{{ route('projects.create') }}"
@@ -33,7 +40,7 @@
                                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded mb-2"
                                         >Ver más...</a>
                                         @if($project->category_id)
-                                            <a href="#" class="badge badge-info">{{ $project->category->name }}</a>
+                                            <a href="{{ route('categories.show', $project->category) }}" class="badge badge-info">{{ $project->category->name }}</a>
                                         @endif
                                     </div>
                                 </div>

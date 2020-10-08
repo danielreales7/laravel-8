@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\App;
 use \Illuminate\Support\Facades\DB;
@@ -18,6 +19,8 @@ Route::view('/quienes-somos', 'about')->name('about');
 Route::resource('portafolio', ProjectController::class)
     ->names('projects')
     ->parameters(['portafolio' => 'project']);
+
+Route::get('categorias/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 //Route::get('/portafolio', [ProjectController::class, 'index'])->name('projects.index');
 //Route::get('/portafolio/crear', [ProjectController::class, 'create'])->name('projects.create');

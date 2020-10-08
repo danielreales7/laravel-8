@@ -11,6 +11,9 @@
                         <img class="w-full" src="/storage/{{ $project->image }}" alt="{{ $project->title }}">
                     @endif
                     <h1 class="text-4xl">{{ $project->title }}</h1>
+                    @if($project->category_id)
+                        <a href="{{ route('categories.show', $project->category) }}" class="badge badge-info">{{ $project->category->name }}</a>
+                    @endif
                     <p>{{ $project->description }}</p>
                     <p>{{ $project->created_at->diffForHumans() }}</p>
                     <div class="flex justify-between items-center">
