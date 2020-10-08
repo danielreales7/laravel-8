@@ -20,6 +20,9 @@ Route::resource('portafolio', ProjectController::class)
     ->names('projects')
     ->parameters(['portafolio' => 'project']);
 
+Route::patch('portafolio/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
+Route::delete('portafolio/{project}/forceDelete', [ProjectController::class, 'forceDelete'])->name('projects.forceDelete');
+
 Route::get('categorias/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 //Route::get('/portafolio', [ProjectController::class, 'index'])->name('projects.index');
